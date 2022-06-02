@@ -1,0 +1,6 @@
+{
+  "reactSnippets.settings.prettierEnabled": true,
+  "editor.defaultFormatter": null,
+  "editor.formatOnSave": true,
+  "files.trimTrailingWhitespace": true
+}

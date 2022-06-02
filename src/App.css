@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  color: red;
+  font-size: 30px;
+
 }
 
 .App-logo {
@@ -24,6 +27,17 @@
   color: white;
 }
 
+.gridContainer{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 50px;
+}
+
+.searchBar{
+  align-items: center;
+
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -35,4 +49,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+html, body, #root{
+  height: 100%;
 }

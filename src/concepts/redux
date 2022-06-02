@@ -1,0 +1,13 @@
+Redux
+
+write data to redux - use dispatch
+
+read data from redux - use selector
+
+3 Kinds
+
+* setup should be done once
+
+* writing data to redux
+
+* reading data from redux
