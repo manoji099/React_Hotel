@@ -6,7 +6,7 @@ import LoadingSpinner from "./LoadingSpinner";
 interface IProps {
     children: React.ReactNode;
 }
-export const context = createContext<firebase.User | null>(null);
+export const Context = createContext<firebase.User | null>(null);
 
 export default function UserContext(props: IProps) {
     const [user, setUser] = useState<firebase.User | null>(null);
@@ -20,9 +20,9 @@ export default function UserContext(props: IProps) {
     }, []);
 
     return (
-        <context.Provider value={user}>
+        <Context.Provider value={user}>
             {!showLoadingspinner && props.children}
-            {showLoadingspinner && <LoadingSpinner showBackDrop={true} />}
-        </context.Provider>
+            {showLoadingspinner && <LoadingSpinner showBackDrop={false} />}
+        </Context.Provider>
     );
 }

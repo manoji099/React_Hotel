@@ -19,7 +19,7 @@ export default function HotelCard(props: IHotel) {
                 <CardMedia component="img" image={props.featured_image} className={style.image} />
                 <CardContent>
                     <Typography variant="h5">{props.fname}</Typography>
-                    <Typography variant="h5">{props.cuisines}</Typography>
+                    <Typography variant="body2">{props.cuisines}</Typography>
 
                 </CardContent>
             </CardActionArea>

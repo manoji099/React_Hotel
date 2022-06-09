@@ -2,7 +2,7 @@ import { AppBar, Button, InputBase, makeStyles, Toolbar, Typography } from "@mat
 import SearchIcon from '@material-ui/icons/Search';
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { context } from "./UserContext";
+import { Context } from "./UserContext";
 
 const useStyle = makeStyles({
     button: {
@@ -52,10 +52,11 @@ interface IProps {
 export default function TopBar(props: IProps) {
 
     const style = useStyle();
-    const Context = useContext(context);
-    const ifUserExist = Context && Context.uid;
-
     const navigate = useNavigate();
+    const context = useContext(Context);
+    const ifUserExist = context && context.uid;
+
+
     return (
         <AppBar>
             <Toolbar className={style.toolBar}>

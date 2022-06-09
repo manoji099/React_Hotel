@@ -2,7 +2,7 @@ import { Fab, makeStyles, Typography } from "@material-ui/core";
 import firebase from "firebase";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { context } from "./UserContext";
+import { Context } from "./UserContext";
 
 export default function Profile() {
 
@@ -27,7 +27,7 @@ export default function Profile() {
 
     });
 
-    const Context = useContext(context);
+    const context = useContext(Context);
     const style = useStyle();
     const navigate = useNavigate();
     const userSignOut = () => {
@@ -39,9 +39,9 @@ export default function Profile() {
             <div className={style.parentContainer}>
                 <div className={style.container}>
                     <Typography variant="h3">Welcome to the profile page</Typography>
-                    <Typography variant="h5" id="name">{Context?.displayName}</Typography>
-                    <Typography variant="h5" id="email">{Context?.email}</Typography>
-                    <Typography variant="h5" id="uid">{Context?.uid}</Typography>
+                    <Typography variant="h5" id="name">{context?.displayName}</Typography>
+                    <Typography variant="h5" id="email">{context?.email}</Typography>
+                    <Typography variant="h5" id="uid">{context?.uid}</Typography>
                     <div className={style.buttons}>
                         <Fab color="primary" variant="extended" id="signout" onClick={userSignOut}>Signout</Fab>
                         <Fab color="secondary" variant="extended" id="home" onClick={() => navigate("/Home")}>Home</Fab>

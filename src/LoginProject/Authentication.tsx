@@ -74,13 +74,10 @@ export default function Authentication(props: IAuthentication) {
     }
     return (
 
-
         <div className={style.parentContainer}>
 
-
-            <form className={style.container} onSubmit={handleSubmit(onSubmitClick)}>
+            <form onSubmit={handleSubmit(onSubmitClick)} className={style.container} >
                 <Typography variant="h3" className={style.title}>{props.title}</Typography>
-
                 {props.showFirstName && <TextField variant="outlined" placeholder="First Name" {...register("firstName", {
                     required: true,
                     minLength: { value: 2, message: "Name should have minimum of 2 letter" }
@@ -108,22 +105,17 @@ export default function Authentication(props: IAuthentication) {
                     helperText={formState.errors?.password?.message}
                 />
 
-
-
                 <div className={style.buttons}>
-                    <Fab color="primary" variant="extended" type="submit">Submit</Fab>
-                    <Fab color="secondary" variant="extended" onClick={() => reset()}> Reset</Fab>
+                    <Fab color="primary" variant="extended" id="submit" type="submit">Submit</Fab>
+                    <Fab color="secondary" variant="extended" id="reset" onClick={() => reset()}> Reset</Fab>
                     {props.showSignUpbutton && <Fab variant="extended" onClick={() => navigate("/SignUp")}>SignUp</Fab>}
                     {props.showLoginbutton && <Fab variant="extended" onClick={() => navigate("/Login")}>Login</Fab>}
                     <Fab variant="extended" onClick={() => navigate("/Home")}>Home</Fab>
-                    {showLoadingSpinner && <LoadingSpinner showBackDrop={false} />}
-                    {errorMessage && <Typography variant="h5" id="errorMessage" className={style.errorMessage}>{errorMessage}</Typography>}
                 </div>
+                {showLoadingSpinner && <LoadingSpinner showBackDrop={true} />}
+                {errorMessage && <Typography variant="h5" id="errorMessage" className={style.errorMessage}>{errorMessage}</Typography>}
+
             </form>
-
-
-
-
         </div >
     );
 }

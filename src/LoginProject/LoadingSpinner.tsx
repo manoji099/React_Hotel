@@ -3,7 +3,7 @@ import { Backdrop, CircularProgress, makeStyles } from "@material-ui/core";
 const useStyle = makeStyles({
 
     container: {
-        height: '110%',
+        height: '100%',
         width: '100%',
         display: 'flex',
         justifyContent: 'center',
@@ -21,11 +21,20 @@ interface IProps {
 
 export default function LoadingSpinner(props: IProps) {
     const styles = useStyle();
-    return (
-        <Backdrop open className={styles.backdrop}>
-            <div>
-                <CircularProgress className={styles.container} />
+    const renderLoadingSpinner = () => {
+
+        return (
+            <div className={styles.container}>
+                <CircularProgress />
             </div>
-        </Backdrop>
-    )
+        )
+    }
+    if (props.showBackDrop) {
+        return (
+            <Backdrop open={props.showBackDrop} className={styles.backdrop}>
+                {renderLoadingSpinner()}
+            </Backdrop>
+        )
+    }
+    return renderLoadingSpinner();
 }

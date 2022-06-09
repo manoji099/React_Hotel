@@ -21,62 +21,66 @@ import Authentication from "./LoginProject/Authentication";
 import Home from "./LoginProject/Home";
 import Login from "./LoginProject/Login";
 import SignUp from "./LoginProject/SignUp";
-import UserContext from "./LoginProject/UserContext";
 import Profile from "./LoginProject/Profile";
+import { Context } from "./LoginProject/UserContext";
+import { useContext } from "react";
 export default function App() {
 
   const submitButton = <GeeksButton name='submitName' label='Submit' onClick={() => alert("Submit has invoked")} />
-
   const resetButton = <GeeksButton name='resetName' label='Reset' onClick={() => alert("Reset has invoked")} />
 
+  const context = useContext(Context);
+  const isUserExist = context && context.uid;
   return (
 
     <Provider store={ConfigureStore()}>
-      <UserContext>
-
-        <Routes>
-          <Route path='/UseEffectOnce' element={<UseEffectOnce />} />
-          <Route path='/UseEffectMultiple' element={<UseEffectMultiple />} />
-          <Route path='/DisplayPerson' element={<DisplayPerson />} />
 
 
-          <Route path='/UseRef' element={<UseRefExample />} />
-          <Route path='/WriteContext' element={<WriteContext />} />
+      <Routes>
+        <Route path='/UseEffectOnce' element={<UseEffectOnce />} />
+        <Route path='/UseEffectMultiple' element={<UseEffectMultiple />} />
+        <Route path='/DisplayPerson' element={<DisplayPerson />} />
 
 
-          <Route path='/List' element={<ListNote />} />
-          <Route path='/SimpleState' element={<SimpleState />} />
-          <Route path='RouteA/:name' element={<RouteA />} />
-          <Route path='/SubmitButton' element={submitButton} />
-          <Route path='/ResetButton' element={resetButton} />
-
-          {/* redux tutioral */}
-          <Route path='/WriteReducer' element={<WriteReducer />} />
-          <Route path='/ReduserUi' element={<ReduserUi />} />
-
-          {/* React hook Form */}
-          <Route path='/ReactHookForm' element={<ReactHookForm />} />
-
-          {/* Material UI */}
-          <Route path='/MaterialUi' element={<MaterialUi />} />
-
-          {/* Login Project */}
-
-          <Route path='/Authentication' element={<Authentication title={"Welcome to Authentication"} onSubmitClick={function (email: string, password: string, displayName?: string): Promise<string> {
-            throw new Error("Function not implemented.");
-          }} />} />
-          <Route path='/Login' element={<Login />} />
-          <Route path='/SignUp' element={<SignUp />} />
-          <Route path='/Home' element={<Home />} />
-          <Route path='/' element={<Navigate to={"/Home"} />} />
-
-          <Route path='/Profile' element={<Profile />} />
+        <Route path='/UseRef' element={<UseRefExample />} />
+        <Route path='/WriteContext' element={<WriteContext />} />
 
 
+        <Route path='/List' element={<ListNote />} />
+        <Route path='/SimpleState' element={<SimpleState />} />
+        <Route path='RouteA/:name' element={<RouteA />} />
+        <Route path='/SubmitButton' element={submitButton} />
+        <Route path='/ResetButton' element={resetButton} />
 
-        </Routes>
+        {/* redux tutioral */}
+        <Route path='/WriteReducer' element={<WriteReducer />} />
+        <Route path='/ReduserUi' element={<ReduserUi />} />
 
-      </UserContext>
+        {/* React hook Form */}
+        <Route path='/ReactHookForm' element={<ReactHookForm />} />
+
+        {/* Material UI */}
+        <Route path='/MaterialUi' element={<MaterialUi />} />
+
+        {/* Login Project */}
+
+        <Route path='/Authentication' element={<Authentication title={"Welcome to Authentication"} onSubmitClick={function (email: string, password: string, displayName?: string): Promise<string> {
+          throw new Error("Function not implemented.");
+        }} />} />
+
+        {!isUserExist && <Route path='/Login' element={<Login />} />}
+        {!isUserExist && <Route path='/SignUp' element={<SignUp />} />}
+        <Route path='/Home' element={<Home />} />
+        {!isUserExist && <Route path='/Profile' element={<Profile />} />}
+        <Route path='/' element={<Navigate to={"/Home"} />} />
+
+
+      </Routes>
+
     </Provider>
   );
 }
+
+// function SubmitOnClick() {
+//   alert("submit has invoked");
+// }
