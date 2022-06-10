@@ -2,7 +2,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 
 export interface IHotel {
-    fname: string;
+    name: string;
     cuisines: string;
     featured_image: string;
     id: string;

@@ -24,6 +24,8 @@ import SignUp from "./LoginProject/SignUp";
 import Profile from "./LoginProject/Profile";
 import { Context } from "./LoginProject/UserContext";
 import { useContext } from "react";
+import { BrowserRouter } from 'react-router-dom';
+
 export default function App() {
 
   const submitButton = <GeeksButton name='submitName' label='Submit' onClick={() => alert("Submit has invoked")} />
@@ -35,48 +37,48 @@ export default function App() {
 
     <Provider store={ConfigureStore()}>
 
-
-      <Routes>
-        <Route path='/UseEffectOnce' element={<UseEffectOnce />} />
-        <Route path='/UseEffectMultiple' element={<UseEffectMultiple />} />
-        <Route path='/DisplayPerson' element={<DisplayPerson />} />
-
-
-        <Route path='/UseRef' element={<UseRefExample />} />
-        <Route path='/WriteContext' element={<WriteContext />} />
+      <BrowserRouter>
+        <Routes>
+          <Route path='/UseEffectOnce' element={<UseEffectOnce />} />
+          <Route path='/UseEffectMultiple' element={<UseEffectMultiple />} />
+          <Route path='/DisplayPerson' element={<DisplayPerson />} />
 
 
-        <Route path='/List' element={<ListNote />} />
-        <Route path='/SimpleState' element={<SimpleState />} />
-        <Route path='RouteA/:name' element={<RouteA />} />
-        <Route path='/SubmitButton' element={submitButton} />
-        <Route path='/ResetButton' element={resetButton} />
-
-        {/* redux tutioral */}
-        <Route path='/WriteReducer' element={<WriteReducer />} />
-        <Route path='/ReduserUi' element={<ReduserUi />} />
-
-        {/* React hook Form */}
-        <Route path='/ReactHookForm' element={<ReactHookForm />} />
-
-        {/* Material UI */}
-        <Route path='/MaterialUi' element={<MaterialUi />} />
-
-        {/* Login Project */}
-
-        <Route path='/Authentication' element={<Authentication title={"Welcome to Authentication"} onSubmitClick={function (email: string, password: string, displayName?: string): Promise<string> {
-          throw new Error("Function not implemented.");
-        }} />} />
-
-        {!isUserExist && <Route path='/Login' element={<Login />} />}
-        {!isUserExist && <Route path='/SignUp' element={<SignUp />} />}
-        <Route path='/Home' element={<Home />} />
-        {!isUserExist && <Route path='/Profile' element={<Profile />} />}
-        <Route path='/' element={<Navigate to={"/Home"} />} />
+          <Route path='/UseRef' element={<UseRefExample />} />
+          <Route path='/WriteContext' element={<WriteContext />} />
 
 
-      </Routes>
+          <Route path='/List' element={<ListNote />} />
+          <Route path='/SimpleState' element={<SimpleState />} />
+          <Route path='RouteA/:name' element={<RouteA />} />
+          <Route path='/SubmitButton' element={submitButton} />
+          <Route path='/ResetButton' element={resetButton} />
 
+          {/* redux tutioral */}
+          <Route path='/WriteReducer' element={<WriteReducer />} />
+          <Route path='/ReduserUi' element={<ReduserUi />} />
+
+          {/* React hook Form */}
+          <Route path='/ReactHookForm' element={<ReactHookForm />} />
+
+          {/* Material UI */}
+          <Route path='/MaterialUi' element={<MaterialUi />} />
+
+          {/* Login Project */}
+
+          <Route path='/Authentication' element={<Authentication title={"Welcome to Authentication"} onSubmitClick={function (email: string, password: string, displayName?: string): Promise<string> {
+            throw new Error("Function not implemented.");
+          }} />} />
+
+          {!isUserExist && <Route path='/Login' element={<Login />} />}
+          {!isUserExist && <Route path='/SignUp' element={<SignUp />} />}
+          <Route path='/Home' element={<Home />} />
+          {!isUserExist && <Route path='/Profile' element={<Profile />} />}
+          <Route path='/' element={<Navigate to={"/Home"} />} />
+
+
+        </Routes>
+      </BrowserRouter>
     </Provider>
   );
 }

@@ -26,10 +26,10 @@ export default function Home() {
     useEffect(() => {
         async function api() {
             const myHeaders = new Headers();
-            myHeaders.append("Accept", "application/json");
+            myHeaders.append("Content-Type", "application/json");
 
             const raw = JSON.stringify({
-                "query": "{\n  hotels{\n    \n    name\n    cuisines\n   \n  }\n}"
+                "query": "{\n  hotels{\n    id\n    name\n    cuisines,\n    featured_image\n  }\n}\n"
             });
 
             const requestOptions = {
@@ -40,7 +40,8 @@ export default function Home() {
             };
 
 
-            const response = await fetch("https://stormy-beyond-99802.herokuapp.com/graphql", requestOptions);
+            const response = await fetch("https://stormy-beyond-99802.herokuapp.com/graphql",
+                requestOptions);
             const json: IFile = await response.json();
             dispatch(completed(json.data.hotels));
         }
@@ -52,7 +53,7 @@ export default function Home() {
             <TopBar searchString={searchString} setSearchString={setSearchString} />
             {HotelReducer.isLoading && <LoadingSpinner showBackDrop={true} />}
             <Grid container spacing={8} className={style.grid}>
-                {!HotelReducer.isLoading && HotelReducer.hotels.filter(x => x.fname.toLowerCase().includes(searchString?.toLowerCase())).map(x => <Grid item> <HotelCard {...x} /> </ Grid>)}
+                {!HotelReducer.isLoading && HotelReducer.hotels.filter(x => x.name.toLowerCase().includes(searchString?.toLowerCase())).map(x => <Grid item> <HotelCard {...x} /> </ Grid>)}
             </Grid>
         </>
     )

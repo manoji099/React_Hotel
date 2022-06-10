@@ -4,29 +4,29 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Context } from "./UserContext";
 
+
+
+const useStyle = makeStyles({
+    parentContainer: {
+        width: '100%',
+        height: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '15px'
+    },
+    buttons: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        gap: '10px'
+    }
+
+});
 export default function Profile() {
-
-    const useStyle = makeStyles({
-        parentContainer: {
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-        },
-        container: {
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '15px'
-        },
-        buttons: {
-            display: 'flex',
-            justifyContent: 'flex-end',
-            gap: '10px'
-        }
-
-    });
-
     const context = useContext(Context);
     const style = useStyle();
     const navigate = useNavigate();
